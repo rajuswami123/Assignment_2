@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class BasicShape{
@@ -8,6 +9,9 @@ String shapeName;
 float side;
 float side2;
 float side3;
+String s1="circle";
+String s2="rectangle";
+String s3="triangle";
     BasicShape(String shapeName,float side){
         this.shapeName=shapeName;
         this.side=side;
@@ -28,13 +32,13 @@ this.side3=side3;
 
 
         float peri ( ){
-        if (shapeName.equals("triangle")) {
+        if (shapeName.equals(s3)) {
             return side + side2 + side3;
         }
-        if (shapeName.equals("rectangle")) {
+        if (shapeName.equals(s2)) {
             return 2*(side2+side3);
         }
-        if (shapeName.equals("circle")) {
+        if (shapeName.equals(s1)) {
             return 2*3.14f*side;
         }
         return 0;
@@ -42,13 +46,13 @@ this.side3=side3;
 
     }
     float area ( ){
-        if (shapeName.equals("triangle")) {
+        if (shapeName.equals(s3)) {
             return 0.5f * side2 * side3;
         }
-        if (shapeName.equals("circle")) {
+        if (shapeName.equals(s1)) {
             return 3.14f*side*side;
         }
-        if (shapeName.equals("rectangle")) {
+        if (shapeName.equals(s2)) {
             return side2*side3;
         }
 
@@ -79,9 +83,9 @@ public class Main {
 
             BasicShape ob= new BasicShape(name,radi);
             ou.info("The perimetre of circle is :");
-            ou.info(""+ ob.peri());
+            ou.log(Level.INFO, () ->""+ ob.peri());
             ou.info("The  Area of Circle  is :");
-            ou.info(""+ ob.area());
+            ou.log(Level.INFO, () ->""+ ob.area());
 
         }
         if(name.equals("triangle")){
@@ -93,9 +97,9 @@ public class Main {
              side2=in.nextFloat();
             BasicShape ob= new BasicShape(name,side,side1,side2);
             ou.info("The perimetre of Triangle is :");
-            ou.info(""+ob.peri());
+            ou.log(Level.INFO, () ->""+ob.peri());
             ou.info("The area of triangle is :");
-            ou.info(""+ ob.area());
+            ou.log(Level.INFO, () ->""+ ob.area());
         }
 
         if(name.equals("rectangle")){
@@ -105,9 +109,9 @@ public class Main {
             side2=in.nextFloat();
             BasicShape ob= new BasicShape(name,side1,side2);
             ou.info("The perimetre of Rectangle is :");
-            ou.info(""+ob.peri());
+            ou.log(Level.INFO, () ->""+ob.peri());
             ou.info("The area of the Rectangle is :");
-            ou.info(""+ ob.area());
+            ou.log(Level.INFO, () ->""+ ob.area());
         }
     }
 
